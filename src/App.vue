@@ -11,10 +11,14 @@ export default {
 }
 </script>
 
+<style lang="stylus">
+  @require './stylus/main'
+</style>
+
 <style>
-@import "../node_modules/bulma/css/bulma.css";
 
 .app {
   text-align: center;
 }
+
 </style>
