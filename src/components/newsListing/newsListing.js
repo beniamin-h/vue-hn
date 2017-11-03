@@ -1,20 +1,40 @@
+import * as TA from 'time-ago';
+
 export default {
   name: 'newsListing',
+  data () {
+    return {
+      headers: [
+        {
+          text: 'Title',
+          align: 'left',
+          sortable: true,
+          value: 'title'
+        },
+        {
+          text: 'Time',
+          align: 'center',
+          sortable: true,
+          value: 'ago'
+        },
+        {
+          text: 'Score',
+          align: 'center',
+          sortable: true,
+          value: 'score'
+        },
+      ]
+    }
+  },
   computed: {
-    news: function () {
-      return [{
-        title: 'Lorem ipsum dolor sept',
-        url: 'http://google.com',
-        score: 91,
-      }, {
-        title: 'Nulla ullamcorper nulla aliquet',
-        url: 'https://news.ycombinator.com/',
-        score: 2,
-      }, {
-        title: 'Sed tristique cursus lobortis sed ut massa eget velit vehicula posuere',
-        url: 'http://nglogic.com',
-        score: 699,
-      }];
+    news () {
+      const ta = TA()
+      return this.$store.state.news.map((news) => (
+        {
+          ...news,
+          ago: ta.ago(news.time * 1000)
+        }
+      ))
     }
   }
 }

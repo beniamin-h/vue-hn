@@ -5,4 +5,7 @@ export default {
   components: {
     newsListing
   },
+  mounted: function () {
+    this.$store.dispatch('LOAD_NEWS')
+  },
 }

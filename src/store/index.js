@@ -9,32 +9,42 @@ Vue.use(Vuex)
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 
 // get test data
-const PROJECTS_DATA = 'https://jsonplaceholder.typicode.com/todos'
+const HS = {
+  newstories: 'https://hacker-news.firebaseio.com/v0/newstories.json',
+  item: (id) => `https://hacker-news.firebaseio.com/v0/item/${id}.json`
+}
+
+const LIMIT = 20
 
 const options = {
   state: {
-    projects: []
+    news: []
   },
   mutations: {
-    [types.SET_PROJECT_LIST]: (state, { list }) => {
-      state.projects = list
+    [types.APPEND_NEWS]: (state, { item }) => {
+      state.news.push(item)
     }
   },
   getters: {
-    completedProjects: state => {
-      return state.projects.filter(project => project.completed).length
-    },
-    projectCount: state => {
-      return state.projects.length
+    news: state => {
+      return state.news
     }
   },
   actions: {
-    [types.LOAD_PROJECT_LIST]: function ({ commit }) {
-      axios.get(PROJECTS_DATA).then((response) => {
-        commit(types.SET_PROJECT_LIST, { list: response.data })
-      }, (err) => {
-        console.log(err)
-      })
+    [types.LOAD_NEWS]: ({ commit }) => {
+      axios.get(HS.newstories)
+        .then(
+          ({ data: items }) => items.slice(0, LIMIT).map(
+            (id) => axios.get(HS.item(id)).then((item) => {
+              commit(types.APPEND_NEWS, { item: item.data })
+            }, (err) => {
+              console.log(err)
+            })
+          ),
+          (err) => {
+            console.log(err)
+          }
+        )
     }
   }
 }

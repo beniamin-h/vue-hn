@@ -1,2 +1,2 @@
-export const SET_PROJECT_LIST = 'SET_PROJECT_LIST'
-export const LOAD_PROJECT_LIST = 'LOAD_PROJECT_LIST'
+export const APPEND_NEWS = 'APPEND_NEWS'
+export const LOAD_NEWS = 'LOAD_NEWS'

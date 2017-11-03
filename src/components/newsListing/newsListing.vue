@@ -3,19 +3,21 @@
 <template>
   <div>
     <h2>Hacker news</h2>
-    <table class="table">
-      <thead>
+    <!--{{news}}-->
+    <v-data-table
+        v-bind:headers="headers"
+        :items="news"
+        hide-actions
+        class="elevation-1"
+      >
+      <template slot="items" scope="props">
+        <!--transition-group-->
         <tr>
-          <th>Title</th>
-          <th>Score</th>
+          <td>{{ props.item.title }}</td>
+          <td class="text-xs-center">{{ props.item.ago }}</td>
+          <td class="text-xs-center">{{ props.item.score }}</td>
         </tr>
-      </thead>
-      <tbody>
-        <tr v-for="newsItem in news">
-          <td>{{newsItem.title}}</td>
-          <td class="text-xs-center">{{newsItem.score}}</td>
-        </tr>
-      </tbody>
-    </table>
+      </template>
+    </v-data-table>
   </div>
 </template>
