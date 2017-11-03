@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import projectList from '../../../src/components/projectsList/projectsList.vue'
+import projectList from '../../../src/components/newsListing/newsListing.vue'
 
 describe('projectList component', () => {
   it('Should be an function', () => {

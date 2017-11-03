@@ -1,9 +1,0 @@
-.completed {
-  background: ForestGreen;
-}
-.uncompleted {
-  background: IndianRed;
-}
-.project-row {
-  cursor: pointer;
-}
