@@ -1,4 +1,4 @@
-<style src="./newsListing.css"></style>
+<style src="./newsListing.css" scoped></style>
 <script src="./newsListing.js"></script>
 <template>
   <div>
@@ -13,7 +13,7 @@
       <tbody>
         <tr v-for="newsItem in news">
           <td>{{newsItem.title}}</td>
-          <td>{{newsItem.score}}</td>
+          <td class="text-xs-center">{{newsItem.score}}</td>
         </tr>
       </tbody>
     </table>
