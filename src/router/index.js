@@ -8,7 +8,8 @@ import NotFound from 'containers/notFound/notFound.vue'
 
 // application routes
 const routes = [
-  { path: '/', name: 'home', component: Home },
+  { path: '/', name: 'home', component: Home, props: { type: 'newstories' } },
+  { path: '/:type', name: 'home', component: Home, props: true },
   { path: '*', name: 'notFound', component: NotFound }
 ]
 

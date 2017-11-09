@@ -6,14 +6,14 @@
     <!--{{news}}-->
     <v-data-table
         v-bind:headers="headers"
-        :items="news"
+        :items="items"
         hide-actions
         must-sort
         class="elevation-1"
       >
       <template slot="items" scope="props">
-        <tr>
-          <td>{{ props.item.title }}</td>
+        <tr :data-id="props.item.id">
+          <td><a :href="props.item.url" class="grey--text text--lighten-4" target="_blank">{{ props.item.title }}</a></td>
           <td class="text-xs-center">{{ props.item.ago }}</td>
           <td class="text-xs-center">{{ props.item.score }}</td>
         </tr>

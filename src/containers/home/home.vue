@@ -2,6 +2,8 @@
 <script src="./home.js"></script>
 <template>
   <div>
-    <newsListing></newsListing>
+    <router-link to="/topstories">Top stories</router-link>
+    <router-link to="/newstories">New stories</router-link>
+    <newsListing :type="type"></newsListing>
   </div>
 </template>
