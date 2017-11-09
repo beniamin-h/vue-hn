@@ -11,7 +11,10 @@ class NewItems extends ItemsBase {
     addItemsLoader(this)
     addItemsUpdaterLive(this)
     addItemsAgoUpdater(this)
-    addItemAgoUpdater(this)
+  }
+
+  onStoreInstanceSet (store) {
+    addItemAgoUpdater(this, store)
   }
 
   storiesUrl () {

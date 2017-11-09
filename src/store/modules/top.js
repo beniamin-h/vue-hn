@@ -9,7 +9,10 @@ class TopItems extends ItemsBase {
     super()
     addItemsLoader(this)
     addItemsUpdaterReload(this)
-    addItemAgoUpdater(this)
+  }
+
+  onStoreInstanceSet (store) {
+    addItemAgoUpdater(this, store)
   }
 
   storiesUrl () {

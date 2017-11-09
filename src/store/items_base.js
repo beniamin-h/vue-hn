@@ -30,6 +30,15 @@ class ItemsBase {
   itemUrl (id) {
     return `https://hacker-news.firebaseio.com/v0/item/${id}.json`
   }
+
+  onStoreInstanceSet (store) {
+
+  }
+
+  setStoreInstance (store) {
+    this.store = store
+    this.onStoreInstanceSet(store)
+  }
 }
 
 export default ItemsBase

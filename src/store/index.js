@@ -12,4 +12,8 @@ const store = new Vuex.Store({
   }
 })
 
+Object.values(modules).forEach((module) => {
+  module.setStoreInstance(store)
+})
+
 export default store
