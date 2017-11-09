@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import * as TA from 'time-ago'
 
 import * as types from './types'
 
@@ -31,6 +32,16 @@ const options = {
       } else {
         state.news.push(item)
       }
+    },
+    [types.UPDATE_AGO]: (state) => {
+      const ta = TA()
+      const now = (new Date()).getTime()
+      state.news = state.news.map((item) => (
+        {
+          ...item,
+          ago: item.time * 1000 < now ? ta.ago(item.time * 1000) : 'Now'
+        }
+      ))
     }
   },
   getters: {
@@ -75,6 +86,9 @@ const options = {
             console.log(err)
           }
         )
+    },
+    [types.UPDATE_AGO]: ({ commit }) => {
+      commit(types.UPDATE_AGO)
     }
   }
 }
