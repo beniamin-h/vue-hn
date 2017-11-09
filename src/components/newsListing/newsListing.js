@@ -15,7 +15,7 @@ export default {
           text: 'Time',
           align: 'center',
           sortable: true,
-          value: 'ago'
+          value: 'time'
         },
         {
           text: 'Score',

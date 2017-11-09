@@ -6,6 +6,7 @@ export default {
     newsListing
   },
   mounted: function () {
-    this.$store.dispatch('LOAD_NEWS')
+    this.$store.dispatch('LOAD_ITEMS')
+    setInterval(() => this.$store.dispatch('UPDATE_ITEMS'), 2000)
   },
 }

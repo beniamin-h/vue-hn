@@ -8,10 +8,10 @@
         v-bind:headers="headers"
         :items="news"
         hide-actions
+        must-sort
         class="elevation-1"
       >
       <template slot="items" scope="props">
-        <!--transition-group-->
         <tr>
           <td>{{ props.item.title }}</td>
           <td class="text-xs-center">{{ props.item.ago }}</td>
